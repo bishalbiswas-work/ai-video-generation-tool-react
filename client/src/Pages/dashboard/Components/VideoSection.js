@@ -5,12 +5,12 @@ import List from "@mui/material/List";
 
 // Comp
 import Cards from "./VideoCards";
-const Projects = () => {
+const Projects = ({setOpen}) => {
   return (
     <div>
       <List style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
         {["Videos"].map((text, index) => (
-          <Cards />
+          <Cards setOpen={setOpen} />
         ))}
       </List>
     </div>

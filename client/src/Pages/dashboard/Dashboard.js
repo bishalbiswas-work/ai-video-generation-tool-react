@@ -25,10 +25,14 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AddIcon from "@mui/icons-material/Add";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 // Component
 import Appbar from "./Components/Appbar";
 import VideoSection from "./Components/VideoSection";
+import { Link } from "react-router-dom";
+import { Dialog, DialogTitle, DialogActions, DialogContent } from "@mui/material";
 const drawerWidth = 240;
 
 const menuItems = [
@@ -40,7 +44,19 @@ const menuItems = [
   { name: "Invoices", icon: <DescriptionIcon /> },
 ];
 
+
 export default function Dashboard() {
+  const [open , setOpen] = React.useState(false)
+  const [fullWidth, setFullWidth] = React.useState(false);
+  const [maxWidth, setMaxWidth] = React.useState('sm');
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -77,34 +93,70 @@ export default function Dashboard() {
         <Box sx={{ height: "50px" }} />
 
         <List>
-          {menuItems.map((item, index) => (
-            <ListItem key={item.name} disablePadding>
-              <ListItemButton
-                sx={{
-                  ...(index === 0 && {
-                    // bgcolor: "#afa3f5",
-                    background: "linear-gradient(90deg, #c3baf7, transparent)",
-                  }),
-                }}
-              >
-                <Box sx={{ mx: 2, color: "grey" }}>
-                  {item.icon} {/* This will render the corresponding icon */}
-                </Box>
-                <ListItemText
-                  primary={item.name}
+          {menuItems.map((item, index) => {
+            if(item.name === "Product Suggestion") {
+              return (
+              <Link to="https://betimeful.life/">
+                 <ListItem key={item.name} disablePadding>
+                <ListItemButton
                   sx={{
-                    ".MuiListItemText-primary": {
-                      fontStyle: "Raleway",
-                      fontSize: "12px",
-                      color: "black",
-
-                      fontWeight: "300",
-                    },
+                    ...(index === 0 && {
+                      // bgcolor: "#afa3f5",
+                      background: "linear-gradient(90deg, #c3baf7, transparent)",
+                    }),
                   }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                >
+                  <Box sx={{ mx: 2, color: "grey" }}>
+                    {item.icon} {/* This will render the corresponding icon */}
+                  </Box>
+                  <ListItemText
+                    primary={item.name}
+                    sx={{
+                      ".MuiListItemText-primary": {
+                        fontStyle: "Raleway",
+                        fontSize: "12px",
+                        color: "black",
+  
+                        fontWeight: "300",
+                      },
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+              </Link>
+              )
+            } else {
+              return (
+                <ListItem key={item.name} disablePadding>
+                <ListItemButton
+                  sx={{
+                    ...(index === 0 && {
+                      // bgcolor: "#afa3f5",
+                      background: "linear-gradient(90deg, #c3baf7, transparent)",
+                    }),
+                  }}
+                >
+                  <Box sx={{ mx: 2, color: "grey" }}>
+                    {item.icon} {/* This will render the corresponding icon */}
+                  </Box>
+                  <ListItemText
+                    primary={item.name}
+                    sx={{
+                      ".MuiListItemText-primary": {
+                        fontStyle: "Raleway",
+                        fontSize: "12px",
+                        color: "black",
+  
+                        fontWeight: "300",
+                      },
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+              )
+            }
+          
+})}
           <ListItem key="Setting" disablePadding>
             <ListItemButton>
               <Box sx={{ mx: 2, color: "grey" }}>
@@ -182,8 +234,54 @@ export default function Dashboard() {
             Copy the code snippet
           </Button>
         </Box>
-
-        <VideoSection />
+        
+        <VideoSection setOpen={setOpen}/>
+        {open && (
+          <>
+           <Dialog
+        fullWidth={fullWidth}
+        maxWidth={maxWidth}
+        open={open}
+        onClose={handleClose}
+      >
+     <DialogTitle style={{borderBottom: '1px solid #CECECE'}}>
+     Turn Your Text into Next Viral Social Media Campaigns!
+            <IconButton
+              aria-label="close"
+              onClick={handleClose}
+              sx={{
+                position: 'absolute',
+                right: 8,
+                top: 8,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
+        <DialogContent>
+         <div style={{display: 'flex'}}>
+              <div style={{
+                width: '200%'
+              }}>
+                <img style={{
+                  marginTop: '-3rem',
+                  marginLeft: '-1rem'
+                }} src="/pop.svg" />
+              </div>
+              <div>
+              <img style={{
+                 width: '900px',
+                 marginLeft: '-2rem'
+                }} src="/pop2.svg" />
+              </div>
+         </div>
+        </DialogContent>
+        <DialogActions>
+          <button className="d-close" onClick={handleClose}>Close</button>
+        </DialogActions>
+      </Dialog>
+          </>
+        )}
       </Box>
     </Box>
   );

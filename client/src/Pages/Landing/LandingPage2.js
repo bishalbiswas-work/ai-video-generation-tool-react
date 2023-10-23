@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
 
@@ -36,9 +36,17 @@ import { useNavigate } from "react-router";
 import { useContext } from "react";
 
 import DataContext from "../../context/DataContext";
+import { ClipLoader } from "react-spinners";
 const LandingPage2 = () => {
   let navigate = useNavigate();
   const dataContext = useContext(DataContext);
+  const [i, setI] = useState(0);
+  const [placeholder, setPlaceholder] = useState('');
+  const txt = 'Create a insta reel of a siberian husky.';
+  const speed = 150;
+  const [showSpinner, setShowSpinner] = useState(false);
+  const [showImage, setShowImage] = useState(false)
+  const spinnerDuration = 3000; // Time in milliseconds
 
   const [input, setInput] = useState("");
   const [isValid, setIsValid] = useState(true);
@@ -71,6 +79,49 @@ const LandingPage2 = () => {
   // const validateInput = (value) => {
   //   setIsValid(value.trim() !== "");
   // };
+  useEffect(() => {
+    const type = () => {
+        if (i < txt.length) {
+            setPlaceholder((prevPlaceholder) => prevPlaceholder + txt.charAt(i));
+            setI((prevI) => prevI + 1);
+        } else {
+            // setPlaceholder('');
+            // setI(0);
+            setShowSpinner(true);
+
+        }
+    };
+
+    const timer = setTimeout(type, speed);
+
+    return () => {
+        clearTimeout(timer);
+    };
+}, [i]);
+
+useEffect(() => {
+    if (showSpinner) {
+        setTimeout(() => {
+            setShowSpinner(false);
+            setShowImage(true)
+        }, spinnerDuration);
+    }
+
+
+}, [showSpinner]);
+
+useEffect(() => {
+    if (showImage) {
+        setTimeout(() => {
+            setShowSpinner(false);
+            setShowImage(false)
+             setPlaceholder('');
+            setI(0);
+        }, 2000);
+    }
+
+
+}, [showImage]);
   return (
     <div>
       {/* Navbar */}
@@ -154,7 +205,7 @@ const LandingPage2 = () => {
         >
           <Grid item sm={6}>
             {/* #4d3ae4,#c81eab 50%,#f33f60); */}
-            <Typography
+            {/* <Typography
               variant="subtitle1"
               sx={{
                 my: 2,
@@ -168,15 +219,16 @@ const LandingPage2 = () => {
               }}
             >
               ReelGPT is finally here. Create 30 viral reels in 30 seconds.
-            </Typography>
+            </Typography> */}
             <Typography
               variant="h4"
               sx={{
                 my: 2,
                 fontWeight: 700,
+                fontSize: '60px'
               }}
             >
-              Turn Your Text Prompt to the Next Viral Reels with AI
+       Convert text to Video with AI
             </Typography>
             <Typography
               variant="body1"
@@ -244,7 +296,7 @@ const LandingPage2 = () => {
                   borderRadius: "15px",
                   px: 4,
                   py: 1,
-                  backgroundColor: "#FF3333",
+                  backgroundColor: "#7B68EE",
                   "&:hover": {
                     backgroundColor: "#e60000",
                   },
@@ -288,12 +340,65 @@ const LandingPage2 = () => {
                 height: "100%", // Make sure the Box takes the full height of its container
               }}
             >
-              <img
-                // src="images/workdemo.gif"
-                src="/images/husky.png"
-                alt="Placeholder"
-                style={{ width: "300px", height: "auto" }}
-              />
+                {placeholder.length === txt.length ? (
+
+<div className={showSpinner ? "flex justify-center items-center mt-[12rem]" : "flex justify-center items-center"}>
+    {showSpinner ? (
+        <ClipLoader
+            size={50}
+            color="#FF4D00"
+            loading={true}
+            cssOverride={{
+                borderWidth: '5px'
+            }}
+        />
+    ) : (
+        <>
+            {showImage && (
+                <img
+                    src="/husky.png"
+                    alt="Your Image"
+                    className="w-[40%] h-[100%] z-[100]" // Adjust image dimensions and styling
+                />
+            )}
+        </>
+
+    )}
+</div>
+) : (
+<form
+    // onSubmit={handleSubmit(onSubmit)} 
+    className="ml-[2em] lg:ml-[5rem] w-[105rem] h-[16rem] lg:w-[45.4rem] lg:h-[5.4rem] flex relative mt-[8rem] lg:mt-[9.2rem] z-[20]">
+    <input
+        type='email'
+        placeholder={placeholder}
+        // {...register("email", { required: "Email Address is required" })}
+        // aria-invalid={errors.email ? "true" : "false"}
+        style={{
+          border: '1px solid #909090',
+          borderRadius:'1rem',
+          padding: '1rem',
+          fontSize: '1.1rem',
+          width: '400px'
+        }}
+        className=" border lg:pl-2 pl-[4rem] h-z border-[#909090]/[.5] h-full w-full rounded-[.6rem] text-[4.5rem] lg:text-[1.6rem] lg:font-medium placeholder:ml-3 placeholder:text-[3.6rem] placeholder:text-[#909090] placeholder:lg:text-[1.6rem] placeholder:font-medium px-[1.3rem] focus:outline-0"
+    />
+    {/* {errors.email && <p className='text-[red] text-[3.5rem] lg:text-[1.3rem] absolute left-[1.5rem] lg:left-1 top-[17rem]  lg:top-[5.8rem]'>{errors.email?.message}</p>} */}
+    <button
+    style={{
+      backgroundColor: '#7B68EE',
+      color: 'white',
+      padding: '0.4rem 1rem',
+      borderRadius: '1rem'
+    }}
+        className="text-[4rem] medium lg:m-0 mr-[.5rem] mt-[.9rem] p-[1rem] w-[29rem] h-[13.4rem] lg:text-[1.5rem] lg:w-[15.6rem] lg:h-[4.5rem] bg-[#fff] text-[#7B68EE] rounded-[2rem] lg:rounded-[.5rem] absolute right-[.5rem] top-[.35rem]"
+        type='submit'
+    // onClick={handleSubmit}
+    >
+        Generate →
+    </button>
+</form>
+)}
             </Box>
           </Grid>
         </Grid>

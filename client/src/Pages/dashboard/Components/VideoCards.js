@@ -51,6 +51,7 @@ export default function VideoCards({
   prompt,
   thumbnailUrl,
   videoUrl,
+  setOpen
 }) {
   const navigate = useNavigate();
   const dataContext = useContext(DataContext);
@@ -253,6 +254,7 @@ export default function VideoCards({
                 sx={{ mx: "3px", p: 0 }}
                 // onClick={handleOpenStripe}
                 key={platform}
+                onClick={() => setOpen(true)}
               >
                 <Avatar
                   alt={platform}
@@ -297,13 +299,12 @@ export default function VideoCards({
                 borderColor: "#7B68EE",
               },
             }}
+            onClick={() => setOpen(true)}
           >
             Edit
           </Button>
           <Button
-            onClick={() => {
-              handleOpenStripe();
-            }}
+            onClick={() => setOpen(true)}
             variant="contained"
             sx={{
               mx: 1,
@@ -319,6 +320,38 @@ export default function VideoCards({
           >
             Post
           </Button>
+        </Stack>
+        <Stack direction="row" spacing={2} sx={{ my: 1 }}>
+         <div  onClick={() => setOpen(true)} className="badge-dash" style={{display: 'flex'}}>
+             <img src="/translate.svg"/> 
+             <p>Translate</p>
+         </div>
+         <div  onClick={() => setOpen(true)} className="badge-dash" style={{display: 'flex'}}>
+             <img src="/stars.svg"/> 
+             <p>Add Subtitles</p>
+         </div>
+        </Stack>
+        <Stack direction="row" spacing={2} sx={{ my: 1 }}>
+         <div  onClick={() => setOpen(true)} className="badge-dash" style={{display: 'flex'}}>
+             <img src="/ml.svg"/> 
+             <p>Longer</p>
+         </div>
+         <div  onClick={() => setOpen(true)} className="badge-dash" style={{display: 'flex'}}>
+             <img src="/ms.svg"/> 
+             <p>Shorter</p>
+         </div>
+        </Stack>
+        <Stack>
+          <input
+          className="dash-in"
+          type="text"
+          placeholder="Add uplifting song to it..."
+          />
+          <img  onClick={() => setOpen(true)} style={{
+            position: 'absolute',
+            top: '42rem', 
+            left: '17.5rem'
+          }} src="send.svg" />
         </Stack>
       </CardContent>
     </Card>
