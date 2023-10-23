@@ -192,7 +192,7 @@ const LandingPage2 = () => {
       {/* <LiveChat /> */}
       {/* Second Element */}
       <Container>
-        <Box height={80}></Box>
+        <Box height={40}></Box>
         <Grid
           container
           spacing={6}
