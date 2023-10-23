@@ -76,9 +76,9 @@ const LandingPage2 = () => {
   //   // validateInput(e.target.value);
   // };
 
-  // const validateInput = (value) => {
-  //   setIsValid(value.trim() !== "");
-  // };
+  const validateInput = (value) => {
+    setIsValid(value.trim() !== "");
+  };
   useEffect(() => {
     const type = () => {
       if (i < txt.length) {
@@ -124,7 +124,7 @@ const LandingPage2 = () => {
         <Toolbar>
           <Typography
             variant="h6"
-            sx={{ fontWeight: 700, fontSize: "28px", color: "" }}
+            sx={{ fontWeight: 700, fontSize: "28px", color: "" , paddingLeft: '1rem'}}
           >
             Clipify
             {/* <Typography
@@ -195,8 +195,8 @@ const LandingPage2 = () => {
         <Box height={80}></Box>
         <Grid
           container
-          spacing={3}
-          sx={{ height: "400px", alignItems: "center" }}
+          spacing={6}
+          sx={{ height: "500px", alignItems: "center" }}
         >
           <Grid item sm={6}>
             {/* #4d3ae4,#c81eab 50%,#f33f60); */}
@@ -220,7 +220,7 @@ const LandingPage2 = () => {
               sx={{
                 my: 2,
                 fontWeight: 700,
-                fontSize: "60px",
+                fontSize: "50px",
               }}
             >
               Convert text to Video with AI
@@ -230,11 +230,14 @@ const LandingPage2 = () => {
               color="textSecondary"
               sx={{
                 my: 2,
-                fontWeight: 400,
+                fontWeight: 300,
+                color: "#636363",
+                fontSize: "22px",
               }}
             >
-              Turn Your Text into a Viral Reels with Human-like voice over &
-              Caption ready to post on all platforms! Supports all languages.
+              Convert your text into videos with companies name Text-to-Video
+              converter. Use AI to create videos for social media ads, promos,
+              or your YouTube channel.
             </Typography>
             <Box width="70%">
               <TextField
@@ -339,7 +342,7 @@ const LandingPage2 = () => {
                 <div
                   className={
                     showSpinner
-                      ? "flex justify-center items-center mt-[12rem]"
+                      ? "flex justify-center items-center mt-[1rem]"
                       : "flex justify-center items-center"
                   }
                 >
@@ -358,7 +361,7 @@ const LandingPage2 = () => {
                         <img
                           src="/husky.png"
                           alt="Your Image"
-                          className="w-[40%] h-[100%] z-[100]" // Adjust image dimensions and styling
+                          className="w-[80%] h-[100%] z-[100]" // Adjust image dimensions and styling
                         />
                       )}
                     </>
@@ -367,36 +370,38 @@ const LandingPage2 = () => {
               ) : (
                 <form
                   // onSubmit={handleSubmit(onSubmit)}
-                  className="ml-[2em] lg:ml-[5rem] w-[105rem] h-[16rem] lg:w-[45.4rem] lg:h-[5.4rem] flex relative mt-[8rem] lg:mt-[9.2rem] z-[20]"
+
+                  className="ml-[2em] lg:ml-[5rem] lg:w-[50.4rem] lg:h-[4.4rem] flex relative mt-[8rem] lg:mt-[9.2rem] z-[20]"
                 >
                   <input
                     type="email"
                     placeholder={placeholder}
                     // {...register("email", { required: "Email Address is required" })}
                     // aria-invalid={errors.email ? "true" : "false"}
-                    style={{
-                      border: "1px solid #909090",
-                      borderRadius: "1rem",
-                      padding: "1rem",
-                      fontSize: "1.1rem",
-                      width: "400px",
-                    }}
-                    className=" border lg:pl-2 pl-[4rem] h-z border-[#909090]/[.5] h-full w-full rounded-[.6rem] text-[4.5rem] lg:text-[1.6rem] lg:font-medium placeholder:ml-3 placeholder:text-[3.6rem] placeholder:text-[#909090] placeholder:lg:text-[1.6rem] placeholder:font-medium px-[1.3rem] focus:outline-0"
+                    // style={{
+                    //   border: "1px solid #909090",
+                    //   borderRadius: "1rem",
+                    //   padding: "1rem",
+                    //   fontSize: "1.1rem",
+                    //   width: "400px",
+                    // }}
+
+                    className=" border lg:pl-2 pl-[4rem] h-z border-[#909090]/[.5] h-[3.5rem] w-[27rem] rounded-[2rem] text-[4.5rem] lg:text-[1rem] lg:font-medium placeholder:ml-3 placeholder:text-[1.6rem] placeholder:text-[#909090] placeholder:lg:text-[1rem] placeholder:font-medium px-[1.3rem] focus:outline-0"
                   />
                   {/* {errors.email && <p className='text-[red] text-[3.5rem] lg:text-[1.3rem] absolute left-[1.5rem] lg:left-1 top-[17rem]  lg:top-[5.8rem]'>{errors.email?.message}</p>} */}
-                  <button
-                    style={{
-                      backgroundColor: "#7B68EE",
-                      color: "white",
-                      padding: "0.4rem 1rem",
-                      borderRadius: "1rem",
-                    }}
-                    className="text-[4rem] medium lg:m-0 mr-[.5rem] mt-[.9rem] p-[1rem] w-[29rem] h-[13.4rem] lg:text-[1.5rem] lg:w-[15.6rem] lg:h-[4.5rem] bg-[#fff] text-[#7B68EE] rounded-[2rem] lg:rounded-[.5rem] absolute right-[.5rem] top-[.35rem]"
+                  <p
+                    // style={{
+                    //   backgroundColor: "#7B68EE",
+                    //   color: "white",
+                    //   padding: "0.4rem 1rem",
+                    //   borderRadius: "1rem",
+                    // }}
+                    className="text-[4rem] medium lg:m-0 mr-[.5rem] mt-[.9rem] p-[1rem] lg:text-[1rem] lg:w-[7.5rem] lg:h-[3rem] text-[#7B68EE] rounded-[2rem] lg:rounded-[.5rem] absolute right-[3rem] top-[0rem]"
                     type="submit"
                     // onClick={handleSubmit}
                   >
                     Generate →
-                  </button>
+                  </p>
                 </form>
               )}
             </Box>
