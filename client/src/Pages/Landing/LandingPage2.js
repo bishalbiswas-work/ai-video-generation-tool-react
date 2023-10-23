@@ -196,7 +196,7 @@ const LandingPage2 = () => {
         <Grid
           container
           spacing={6}
-          sx={{ height: "500px", alignItems: "center" }}
+          sx={{ height: "360px", alignItems: "center" }}
         >
           <Grid item sm={6}>
             {/* #4d3ae4,#c81eab 50%,#f33f60); */}
@@ -422,9 +422,9 @@ const LandingPage2 = () => {
           ))}
         </Grid>
       </Container> */}
-      <Container sx={{ my: 5 }}>
+      <Container>
       <div className='mt-[10rem]'>
-        <h4 className='bold text-center text-[1.2rem] mb-[5rem]'>Easily Integrates With</h4>
+        <h4 className='bold text-center text-[1.2rem] mb-[2rem]'>Easily Integrates With</h4>
         <div className='flex gap-[6rem] justify-center'>
             <div>
                 <img src="/static/brands/shopify.png" alt="shopify" />
