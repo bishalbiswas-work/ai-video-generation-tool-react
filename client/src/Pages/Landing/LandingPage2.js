@@ -232,7 +232,7 @@ const LandingPage2 = () => {
                 my: 2,
                 fontWeight: 300,
                 color: "#636363",
-                fontSize: "22px",
+                fontSize: "18px",
               }}
             >
               Convert your text into videos with companies name Text-to-Video
