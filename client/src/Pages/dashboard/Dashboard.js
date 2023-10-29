@@ -103,6 +103,7 @@ export default function Dashboard() {
                     ...(index === 0 && {
                       // bgcolor: "#afa3f5",
                       background: "linear-gradient(90deg, #c3baf7, transparent)",
+                     
                     }),
                   }}
                 >
@@ -115,7 +116,7 @@ export default function Dashboard() {
                       ".MuiListItemText-primary": {
                         fontStyle: "Raleway",
                         fontSize: "12px",
-                        color: "black",
+                        color: index === 0 ? "7B68EE !important" : "black",
   
                         fontWeight: "300",
                       },
@@ -193,13 +194,13 @@ export default function Dashboard() {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: "inline" }}
+            sx={{ display: "inline", fontWeight: 'bold' }}
           >
             Recent Videos
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           {/* This box will grow and take up available space */}
-          <Button
+          {/* <Button
             variant="outlined"
             disableElevation
             startIcon={<AddIcon />}
@@ -232,7 +233,7 @@ export default function Dashboard() {
             }}
           >
             Copy the code snippet
-          </Button>
+          </Button> */}
         </Box>
         
         <VideoSection setOpen={setOpen}/>

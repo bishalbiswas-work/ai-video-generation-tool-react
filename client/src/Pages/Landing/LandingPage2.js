@@ -254,7 +254,7 @@ const LandingPage2 = () => {
                     borderRadius: "15px !important", // This is for the input container
                   },
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderRadius: "25px !important", // This is for the outline
+                    borderRadius: "20px !important", // This is for the outline
                   },
                   "& .MuiInputBase-input": {
                     // height: "2.1rem !important",
@@ -292,8 +292,7 @@ const LandingPage2 = () => {
                   mt: 2,
                   fontSize: "12px",
                   borderRadius: "15px",
-                  px: 4,
-                  py: 1,
+                  padding: "15px 70.26px 15px 70.74px",
                   backgroundColor: "#7B68EE",
                   "&:hover": {
                     backgroundColor: "#e60000",
@@ -987,10 +986,9 @@ const LandingPage2 = () => {
           color="primary"
           sx={{
             borderRadius: "15px",
-            px: 4,
-            py: 1,
+            padding: "19px 70.26px 21px 70.74px",
             my: 2,
-            backgroundColor: "#FF3333",
+            backgroundColor: "#7B68EE",
             "&:hover": {
               backgroundColor: "#e60000",
             },

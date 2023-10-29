@@ -133,24 +133,19 @@ const VoiceSelection = () => {
                   variant="outlined"
                   size="sm"
                   sx={{
-                    px: 4,
-                    color: "#ffff",
+                    padding: "12px 24px",
+                    color: "black",
                     fontSize: "12px",
                     borderRadius: "10px",
-                    borderColor: "#7B68EE",
+                    borderColor: "#FFFF",
                     "&:hover": {
-                      borderColor: "#7B68EE",
+                      borderColor: "#FFFF",
                     },
                     "&:active": {
-                      borderColor: "#7B68EE",
+                      borderColor: "#FFFF",
                     },
-                    backgroundColor: "#7B68EE",
-                    "&:hover": {
-                      backgroundColor: "#7B68EE",
-                    },
-                    "&:active": {
-                      backgroundColor: "#7B68EE",
-                    },
+                    backgroundColor: "#FFFF",
+                   
                   }}
                 >
                   Back
@@ -160,7 +155,7 @@ const VoiceSelection = () => {
                   variant="contained"
                   size="sm"
                   sx={{
-                    px: 4,
+                    padding: "12px 24px",
 
                     fontSize: "12px",
                     borderRadius: "10px",
@@ -196,12 +191,12 @@ function VoiceButton({ voice, isSelected, onSelect }) {
         px: 5,
         py: 4,
         borderRadius: "10px",
-        borderColor: isSelected ? "#7B68EE" : "#ffe5eb",
+        borderColor: isSelected ? "#7B68EE" : "#CECECE",
         "&:hover": {
-          borderColor: "#ff4d70",
+          borderColor: "#7B68EE",
         },
         "&:active": {
-          borderColor: "#ff4d70",
+          borderColor: "#7B68EE",
         },
       }}
     >
